@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="index.css" />
+    <title>Document</title>
+  </head>
+  <html>
+    <body>
+      <main>
+        <div class="pg__container">
+          <h1 class="pg__title">
+            Generate a <span class="pg__title-highlight">random password</span>
+          </h1>
+          <p class="pg__text">Never use and insecure password again.</p>
+          <button class="pg__btn" type="button" onclick="generatePassword()">
+            Generate passwords
+          </button>
+          <hr />
+          <div class="pg__passwords">
+            <output
+              class="pg__password pg__password-one"
+              aria-live="polite"
+            ></output>
+            <output
+              class="pg__password pg__password-two"
+              aria-live="polite"
+            ></output>
+          </div>
+        </div>
+      </main>
+      <script src="index.js"></script>
+    </body>
+  </html>
+</html>
