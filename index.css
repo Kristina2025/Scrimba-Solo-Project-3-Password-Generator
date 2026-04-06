@@ -31,7 +31,7 @@ body {
 .pg__container {
   width: 100%;
   max-width: 34.375rem;
-  padding: 7rem 3.25rem;
+  padding: 5.5rem 3.25rem;
   background-color: var(--color-card-bg);
   color: var(--color-text-white);
 }
@@ -98,4 +98,19 @@ hr {
   line-height: 1.3;
   font-width: 500;
   border-radius: 6px;
+}
+
+.pg__form {
+  margin-top: 2.5rem;
+  color: var(--color-text-grey);
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+}
+
+.pg__form-content-items,
+.pg__form-length {
+  display: flex;
+  gap: 0.8rem;
+  margin-top: 0.25rem;
 }

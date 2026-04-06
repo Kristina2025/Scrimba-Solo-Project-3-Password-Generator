@@ -1,4 +1,4 @@
-const characters = [
+const letters = [
   "A",
   "B",
   "C",
@@ -51,16 +51,9 @@ const characters = [
   "x",
   "y",
   "z",
-  "0",
-  "1",
-  "2",
-  "3",
-  "4",
-  "5",
-  "6",
-  "7",
-  "8",
-  "9",
+];
+const numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+const symbols = [
   "~",
   "`",
   "!",
@@ -92,17 +85,55 @@ const characters = [
   "/",
 ];
 
+const passwordForm = document.getElementById("password-form");
 const passOne = document.querySelector(".pg__password-one");
 const passTwo = document.querySelector(".pg__password-two");
-const passLength = 15;
 
-function generatePassword() {
-  console.log("hi");
+passwordForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  let charactersArray = getCharactersArray();
+  let numCharacters = document.getElementById("pass-length").value;
+  let passwordOne = generatePassword(charactersArray, numCharacters);
+  passOne.textContent = passwordOne;
+  let passwordTwo = generatePassword(charactersArray, numCharacters);
+  passTwo.textContent = passwordTwo;
+});
+
+function getCharactersArray() {
+  let characters = [...letters];
+  let checkBoxes = Array.from(
+    document.querySelectorAll("input[type='checkbox']:checked"),
+  ).map((cb) => cb.value);
+  if (checkBoxes.includes("numbers")) characters.push(...numbers);
+  if (checkBoxes.includes("symbols")) characters.push(...symbols);
+  return characters;
+}
+
+function generatePassword(characters, passLength) {
   let password = "";
   for (let i = 0; i < passLength; i++) {
     let randomIdx = Math.floor(Math.random() * characters.length);
     password += characters[randomIdx];
   }
-  passOne.textContent = password;
-  passTwo.textContent = password;
+  return password;
+}
+
+passOne.addEventListener("click", () =>
+  copyToClipboard(passOne.textContent, passOne),
+);
+passTwo.addEventListener("click", () =>
+  copyToClipboard(passTwo.textContent, passTwo),
+);
+
+async function copyToClipboard(text, element) {
+  if (!text) return;
+  try {
+    await navigator.clipboard.writeText(text);
+    element.textContent = "Copied!";
+    setTimeout(() => {
+      element.textContent = text;
+    }, 1000);
+  } catch (err) {
+    console.warn("Failed to copy", err);
+  }
 }

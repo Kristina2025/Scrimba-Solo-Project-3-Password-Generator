@@ -20,9 +20,41 @@
             Generate a <span class="pg__title-highlight">random password</span>
           </h1>
           <p class="pg__text">Never use and insecure password again.</p>
-          <button class="pg__btn" type="button" onclick="generatePassword()">
-            Generate passwords
-          </button>
+          <form id="password-form">
+            <div class="pg__form">
+              <div class="pg__form-length">
+                <label for="pass-length">Password length:</label>
+                <input
+                  type="number"
+                  id="pass-length"
+                  name="pass-length"
+                  value="15"
+                  min="10"
+                  max="20"
+                />
+              </div>
+              <div class="pg__form-content">
+                <p>Password should include:</p>
+                <div class="pg__form-content-items">
+                  <input
+                    type="checkbox"
+                    id="numbers"
+                    name="numbers"
+                    value="numbers"
+                  />
+                  <label for="numbers">numbers</label>
+                  <input
+                    type="checkbox"
+                    id="symbols"
+                    name="symbols"
+                    value="symbols"
+                  />
+                  <label for="symbols">symbols</label>
+                </div>
+              </div>
+            </div>
+            <button class="pg__btn" type="submit">Generate passwords</button>
+          </form>
           <hr />
           <div class="pg__passwords">
             <output
